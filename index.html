@@ -9,7 +9,131 @@
     <script async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4736839851145955"
             crossorigin="anonymous"></script>
+    <style>
+        /* ========== Reset + base ========== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html,body { height: 100%; font-family: "Poppins", Arial, sans-serif; color:#222; background:#f7f7f8; }
+        a { color: inherit; text-decoration: none; }
 
+        .container { max-width: 1100px; margin: 28px auto; padding: 0 16px; }
+
+        /* ========== NAVBAR ========== */
+        nav.navbar {
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            color: #fff;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        nav.navbar h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        nav.navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav.navbar a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        nav.navbar a:hover {
+            color: #ffd166;
+        }
+
+        /* ========== Layout principale ========== */
+        main { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items:start; }
+        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+        .gallery, .videos {
+            background: #fff;
+            padding:16px;
+            border-radius:10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .section-title { margin-bottom:12px; font-weight:700; font-size:1.05rem; }
+
+        /* Galleria immagini */
+        .img-grid {
+            display:grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap:10px;
+        }
+        @media (max-width:700px) { .img-grid { grid-template-columns: repeat(2,1fr); } }
+        .img-grid img {
+            width:100%;
+            display:block;
+            height:150px;
+            object-fit:cover;
+            border-radius:6px;
+            cursor:pointer;
+            transition: transform .18s ease;
+        }
+        .img-grid img:hover { transform: scale(1.03); }
+
+        /* Video */
+        .video-list { display:grid; gap:14px; }
+        .video-card { display:flex; flex-direction:column; gap:8px; }
+        .video-card video {
+            width:100%; height:auto;
+            border-radius:6px; background:#000;
+        }
+
+        /* Sidebar */
+        aside { display:flex; flex-direction:column; gap:16px; }
+        .card {
+            background:#fff;
+            padding:12px;
+            border-radius:10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position:fixed; inset:0;
+            display:none;
+            align-items:center; justify-content:center;
+            background: rgba(0,0,0,0.75);
+            z-index:9999; padding:20px;
+        }
+        .lightbox.active { display:flex; }
+        .lightbox-content {
+            max-width: 1100px; width:100%;
+            max-height:90vh; overflow:auto;
+            border-radius:8px;
+        }
+        .lightbox img, .lightbox video {
+            width:100%; height:auto; display:block; border-radius:6px;
+        }
+        .lightbox .close {
+            position:absolute; top:18px; right:22px;
+            color:#fff; font-size:28px; cursor:pointer;
+            background:transparent; border:none;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            margin-top: 40px;
+            background: linear-gradient(90deg, #182848, #4b6cb7);
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+        }
+        footer a {
+            color: #ffd166;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
     <style>
         /* ========== Reset + base ========== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,6 +178,14 @@
     </style>
 </head>
 <body>
+<nav class="navbar">
+    <h1>🎬 Il Mio Sito Video</h1>
+    <ul>
+        <li><a href="#gallery">Galleria</a></li>
+        <li><a href="#videos">Video</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+    </ul>
+</nav>
 <div class="container">
     <header>
         <h1>Il Mio Mini Sito — Foto & Video</h1>
@@ -76,11 +208,11 @@
                          alt="Foto 1" data-type="image">
                     <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop"
                          alt="Foto 2" data-type="image">
-                    <img src="https://images.unsplash.com/photo-1498575207490-3d6cc7f0f1e2?q=80&w=800&auto=format&fit=crop"
+                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=800&auto=format&fit=crop"
                          alt="Foto 3" data-type="image">
                     <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop"
                          alt="Foto 4" data-type="image">
-                    <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070641?q=80&w=800&auto=format&fit=crop"
+                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=800&auto=format&fit=crop"
                          alt="Foto 5" data-type="image">
                     <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800&auto=format&fit=crop"
                          alt="Foto 6" data-type="image">
@@ -142,9 +274,11 @@
     </main>
 
     <footer>
-        <p>© 2025 Il Mio Sito — Foto & Video</p>
+        <p>© 2025 Il Mio Sito — Foto & Video | Realizzato con ❤️ da <a href="#">ELMEHDI</a></p>
     </footer>
 </div>
+
+
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
